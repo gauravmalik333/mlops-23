@@ -18,6 +18,18 @@ import matplotlib.pyplot as plt
 from sklearn import datasets, metrics, svm
 from sklearn.model_selection import train_test_split
 
+def preprocess_data(data):
+    #flatten the image
+    n_samples = len(data)
+    data = data.reshape(n_samples, -1)
+    return data
+
+#split data
+def split_train_dev_test(x, y, test_size, dev_size):
+    X_train, X_test, y_train, y_test = train_test_split(
+            x, y, test_size=0.5, shuffle=False, random_state=random_state)
+    return X_train, X_test, y_train, y_test
+
 ###############################################################################
 # Digits dataset
 # --------------
